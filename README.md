@@ -1,14 +1,24 @@
-git add file
+一般的小项目放在github上，一般流程如下：
 
-echo "ss" >> file
+1.　新建一个repository
 
-git status
+2.　在本地目录下打开命令行，输入`git clone https://github.com/LinXueyuanStdio/learnGit`
+以本项目为例，直接在git clone后加上网址即可。clone完成后会得到一个learnGit文件夹
 
-git commit -m "new file"
+3.　继续输入`cd learnGit`进入项目文件夹
 
-git push -u origin master
+4.　把需要上传的文件粘贴到learnGit文件夹内，使用`git add file`将新文件加入缓存区
+
+5.　`echo "ss" >> file`(非必须)该命令意思是给文件名为`ｆｉｌｅ`的文件写入字符串`ss`
+
+6. `git status`查看git add之后和之前的文件差异状态
+
+7.　`git commit -m "new file"`确定提交刚刚add后的文件，`-m "new file"`意思是本次提交所做的修改的简要介绍，m是message的缩写
+
+8.　`git push -u origin master`向github服务器推送git commit 后的文件，流程完毕
 
 套路：
+
 `mkdir  ADirectory`#本地随意创建一个文件夹 
 
 `cd ADirectory`#进到该目录
@@ -53,6 +63,7 @@ git push -u origin master
 
 
 最基本的命令：
+
 `git clone` 拷贝并跟踪远程的master分支。跟踪的好处是以后可以直接通过pull和push命令来提交或者获取远程最新的代码，而不需要指定远程分支名字。
 
 `git submodule init`
@@ -60,6 +71,7 @@ git push -u origin master
 `git submodule update`
 
 参考示意图
+
 HEAD 指向当前的commit 对象(可以想象为当前分支的别名)，同时也用来表明我们在哪个branch上工作。所以当我们使用HEAD来操作指针的时候，其实就是不改变当前的commit的指向。
 
 
