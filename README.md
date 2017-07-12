@@ -21,7 +21,7 @@
 
 1.　fork原始仓库
 
-以此项目为例：https://github.com/lzjqsdd/scikit-learn-doc-cn　，右上角有个fork，点击fork到自己的仓库
+以此项目为例：[https://github.com/lzjqsdd/scikit-learn-doc-cn](https://github.com/lzjqsdd/scikit-learn-doc-cn) 右上角有个fork，点击fork到自己的仓库
 
 2.　clone 自己的仓库: `git clone https://github.com/LinXueyuanStdio/scikit-learn-doc-cn`　到本地。这个项目就是上面所说的项目拷贝。
 
@@ -35,15 +35,18 @@
 
 - 切换到想要更新的目录，合并分支: `git merge upstream/master`  // 把远程分支的master分支合并到当前分支，这样远程项目中的修改就合并到了本地。
 
+
 5. 自己分支开发，如 dev 分支开发：
 
 - `git checkout -b dev`
+
 
 6. 本地 dev 提交
 
 - `git add *`
 
 - `git commit -m "update"`
+
 
 7. 切换 master 分支，同步原始仓库：
 
@@ -58,13 +61,27 @@
 
 - `git merge master`
 
+
 9. 提交本地 dev 分支到自己的远程 dev 仓库
 
 - `git push origin dev`
-    
+
+
 10.  现在才是给原始仓库发 pull request 请求,等待原作者回复（接受/拒绝）
 
 到原始仓库页面，这时右边多出一个commit pull request按钮，点击，填写改动信息，完啦。
+
+11. (附)删除分支
+
+- `git push origin :dev`  # 删除远程dev分支，危险命令哦
+# 下面两条是删除本地分支
+- `git checkout master`  # 切换到master分支
+- `git branch -d dev`  # 删除本地dev分支
+
+12. (附)查看所有分支
+
+- `git branch --all`
+
 
 套路：
 
