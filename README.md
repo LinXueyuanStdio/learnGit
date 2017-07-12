@@ -1,4 +1,4 @@
-一般的小项目放在github上，一般流程如下：
+需求1：小项目放在github上，一般流程如下：
 
 1.　新建一个repository
 
@@ -16,6 +16,55 @@
 7.　`git commit -m "new file"`确定提交刚刚add后的文件，`-m "new file"`意思是本次提交所做的修改的简要介绍，m是message的缩写
 
 8.　`git push -u origin master`向github服务器推送git commit 后的文件，流程完毕
+
+需求2：参与github开源项目，提交pull request：
+
+1.　fork原始仓库
+
+以此项目为例：https://github.com/lzjqsdd/scikit-learn-doc-cn　，右上角有个fork，点击fork到自己的仓库
+
+2.　clone 自己的仓库: `git clone https://github.com/LinXueyuanStdio/scikit-learn-doc-cn`　到本地。这个项目就是上面所说的项目拷贝。
+
+3.　在 master 分支添加原始仓库为远程分支:`git remote add upstream https://github.com/lzjqsdd/scikit-learn-doc-cn`
+
+4. 如果fork的项目有更新怎么办呢？如果重新再fork这个项目的话，自然也是没有问题的，只不过这样是不是有点太low了
+
+解决方式是:
+
+- 拉取远程分支: `git fetch upstream` 
+
+- 切换到想要更新的目录，合并分支: `git merge upstream/master`  // 把远程分支的master分支合并到当前分支，这样远程项目中的修改就合并到了本地。
+
+5. 自己分支开发，如 dev 分支开发：
+
+- `git checkout -b dev`
+
+6. 本地 dev 提交
+
+- `git add *`
+
+- `git commit -m "update"`
+
+7. 切换 master 分支，同步原始仓库：
+
+- `git checkout master`
+
+- `git pull upstream master`
+
+
+8. 切换本地 dev 分支，合并本地 master 分支（已经和原始仓库同步），可能需要解冲突
+
+- `git checkout dev`
+
+- `git merge master`
+
+9. 提交本地 dev 分支到自己的远程 dev 仓库
+
+- `git push origin dev`
+    
+10.  现在才是给原始仓库发 pull request 请求,等待原作者回复（接受/拒绝）
+
+到原始仓库页面，这时右边多出一个commit pull request按钮，点击，填写改动信息，完啦。
 
 套路：
 
