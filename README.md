@@ -15,9 +15,9 @@
 
 6. `git status`查看git add之后和之前的文件差异状态
 
-7.　`git commit -m "new file"`确定提交刚刚add后的文件，`-m "new file"`意思是本次提交所做的修改的简要介绍，m是message的缩写
+7. `git commit -m "new file"`确定提交刚刚add后的文件，`-m "new file"`意思是本次提交所做的修改的简要介绍，m是message的缩写
 
-8.　`git push -u origin master`向github服务器推送git commit 后的文件，流程完毕
+8. `git push -u origin master`向github服务器推送git commit 后的文件，流程完毕
 
 ## 需求2：参与github开源项目，提交pull request：
 
@@ -227,11 +227,11 @@ HEAD 指向当前的commit 对象(可以想象为当前分支的别名)，同时
 
 在冲突状态下，需要解决冲突的文件会从index打回到工作区。
 
-1.用工具或者手工解决冲突 
+1. 用工具或者手工解决冲突 
 
-2.git add 命令来表明冲突已经解决。 
+2. git add 命令来表明冲突已经解决。 
 
-3.再次commit 已解决冲突的文件。
+3. 再次commit 已解决冲突的文件。
 
 $ `git reset --hard ORIG_HEAD` 用来撤销已经commit 的merge. 
 
