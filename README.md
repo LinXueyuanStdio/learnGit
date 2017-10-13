@@ -2,16 +2,16 @@
 
 ## 需求1：小项目放在github上，一般流程如下：
 
-1.　新建一个repository
+1. 新建一个repository
 
-2.　在本地目录下打开命令行，输入`git clone https://github.com/LinXueyuanStdio/learnGit`
+2. 在本地目录下打开命令行，输入`git clone https://github.com/LinXueyuanStdio/learnGit`
 以本项目为例，直接在git clone后加上网址即可。clone完成后会得到一个learnGit文件夹
 
-3.　继续输入`cd learnGit`进入项目文件夹
+3. 继续输入`cd learnGit`进入项目文件夹
 
-4.　把需要上传的文件粘贴到learnGit文件夹内，使用`git add file`将新文件加入缓存区
+4. 把需要上传的文件粘贴到learnGit文件夹内，使用`git add file`将新文件加入缓存区
 
-5.　`echo "ss" >> file`(非必须)该命令意思是给文件名为`ｆｉｌｅ`的文件写入字符串`ss`.
+5. `echo "ss" >> file`(非必须)该命令意思是给文件名为`ｆｉｌｅ`的文件写入字符串`ss`.
 
 6. `git status`查看git add之后和之前的文件差异状态
 
@@ -21,13 +21,13 @@
 
 ## 需求2：参与github开源项目，提交pull request：
 
-1.　fork原始仓库
+1. fork原始仓库
 
 以此项目为例：[https://github.com/lzjqsdd/scikit-learn-doc-cn](https://github.com/lzjqsdd/scikit-learn-doc-cn) 右上角有个fork，点击fork到自己的仓库
 
-2.　clone 自己的仓库: `git clone https://github.com/LinXueyuanStdio/scikit-learn-doc-cn`　到本地。这个项目就是上面所说的项目拷贝。
+2. clone 自己的仓库: `git clone https://github.com/LinXueyuanStdio/scikit-learn-doc-cn`　到本地。这个项目就是上面所说的项目拷贝。
 
-3.　在 master 分支添加原始仓库为远程分支:`git remote add upstream https://github.com/lzjqsdd/scikit-learn-doc-cn`.
+3. 在 master 分支添加原始仓库为远程分支:`git remote add upstream https://github.com/lzjqsdd/scikit-learn-doc-cn`.
 
 4. 如果fork的项目有更新怎么办呢？如果重新再fork这个项目的话，自然也是没有问题的，只不过这样是不是有点太low了
 
@@ -69,7 +69,7 @@
 - `git push origin dev`.
 
 
-10.  现在才是给原始仓库发 pull request 请求,等待原作者回复（接受/拒绝）
+10. 现在才是给原始仓库发 pull request 请求,等待原作者回复（接受/拒绝）
 
 到原始仓库页面，这时右边多出一个commit pull request按钮，点击，填写改动信息，完啦。
 
