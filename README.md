@@ -11,7 +11,7 @@
 
 4.　把需要上传的文件粘贴到learnGit文件夹内，使用`git add file`将新文件加入缓存区
 
-5.　`echo "ss" >> file`(非必须)该命令意思是给文件名为`ｆｉｌｅ`的文件写入字符串`ss`
+5.　`echo "ss" >> file`(非必须)该命令意思是给文件名为`ｆｉｌｅ`的文件写入字符串`ss`.
 
 6. `git status`查看git add之后和之前的文件差异状态
 
@@ -27,46 +27,46 @@
 
 2.　clone 自己的仓库: `git clone https://github.com/LinXueyuanStdio/scikit-learn-doc-cn`　到本地。这个项目就是上面所说的项目拷贝。
 
-3.　在 master 分支添加原始仓库为远程分支:`git remote add upstream https://github.com/lzjqsdd/scikit-learn-doc-cn`
+3.　在 master 分支添加原始仓库为远程分支:`git remote add upstream https://github.com/lzjqsdd/scikit-learn-doc-cn`.
 
 4. 如果fork的项目有更新怎么办呢？如果重新再fork这个项目的话，自然也是没有问题的，只不过这样是不是有点太low了
 
 解决方式是:
 
-- 拉取远程分支: `git fetch upstream` 
+- 拉取远程分支: `git fetch upstream` .
 
 - 切换到想要更新的目录，合并分支: `git merge upstream/master`  // 把远程分支的master分支合并到当前分支，这样远程项目中的修改就合并到了本地。
 
 
 5. 自己分支开发，如 dev 分支开发：
 
-- `git checkout -b dev`
+- `git checkout -b dev`.
 
 
 6. 本地 dev 提交
 
-- `git add *`
+- `git add *`.
 
-- `git commit -m "update"`
+- `git commit -m "update"`.
 
 
 7. 切换 master 分支，同步原始仓库：
 
-- `git checkout master`
+- `git checkout master`.
 
-- `git pull upstream master`
+- `git pull upstream master`.
 
 
 8. 切换本地 dev 分支，合并本地 master 分支（已经和原始仓库同步），可能需要解冲突
 
-- `git checkout dev`
+- `git checkout dev`.
 
-- `git merge master`
+- `git merge master`.
 
 
 9. 提交本地 dev 分支到自己的远程 dev 仓库
 
-- `git push origin dev`
+- `git push origin dev`.
 
 
 10.  现在才是给原始仓库发 pull request 请求,等待原作者回复（接受/拒绝）
@@ -76,13 +76,13 @@
 11. (附)删除分支
 
 - `git push origin :dev`  # 删除远程dev分支，危险命令哦
-# 下面两条是删除本地分支
+###### 下面两条是删除本地分支
 - `git checkout master`  # 切换到master分支
 - `git branch -d dev`  # 删除本地dev分支
 
 12. (附)查看所有分支
 
-- `git branch --all`
+- `git branch --all`.
 
 
 # 套路：
@@ -97,7 +97,7 @@
 
 `git config --global user.name "ThisIsUserName"`#配置用户名和邮箱
 
-`git config --global user.email ThisIsUserEmail@email.com `
+`git config --global user.email ThisIsUserEmail@email.com `.
 
 `git init`#初始化为本地的仓库 
 
