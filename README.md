@@ -1,4 +1,6 @@
-需求1：小项目放在github上，一般流程如下：
+# 需求
+
+## 需求1：小项目放在github上，一般流程如下：
 
 1.　新建一个repository
 
@@ -17,7 +19,7 @@
 
 8.　`git push -u origin master`向github服务器推送git commit 后的文件，流程完毕
 
-需求2：参与github开源项目，提交pull request：
+## 需求2：参与github开源项目，提交pull request：
 
 1.　fork原始仓库
 
@@ -83,7 +85,7 @@
 - `git branch --all`
 
 
-套路：
+# 套路：
 
 `mkdir  ADirectory`#本地随意创建一个文件夹 
 
@@ -128,7 +130,7 @@
 `git pull`#把github的文件都拉下来
 
 
-最基本的命令：
+# 最基本的命令：
 
 `git clone` 拷贝并跟踪远程的master分支。跟踪的好处是以后可以直接通过pull和push命令来提交或者获取远程最新的代码，而不需要指定远程分支名字。
 
@@ -183,11 +185,11 @@ HEAD 指向当前的commit 对象(可以想象为当前分支的别名)，同时
 
 #### 如果是单个文件 
 
-1.use "`git reset HEAD <file>...`" to unstage 
+1. use "`git reset HEAD <file>...`" to unstage 
 
 如果已经用add 命令把文件加入stage了，就先需要从stage中撤销，然后再从工作区撤销 
 
-2.use "`git checkout -- <file>...`" to discard changes in working directory
+2. use "`git checkout -- <file>...`" to discard changes in working directory
 
 `git checkout a.txt` 撤销a.txt的变动（工作区上的文件） 
 
@@ -201,7 +203,7 @@ HEAD 指向当前的commit 对象(可以想象为当前分支的别名)，同时
 
 3.`git revert` 也是撤销命令，区别在于reset是指向原地或者向前移动指针，git revert是创建一个commit来覆盖当前的commit,指针向后移动
 
-提交类命令 
+## 提交类命令 
 
 1. `git add` 跟踪新文件或者已有文件的改动，或者用来解决冲突
 
@@ -209,7 +211,7 @@ HEAD 指向当前的commit 对象(可以想象为当前分支的别名)，同时
 
 3. `git commit -a` 把修改的文件先提交到stage,然后再从stash提交到branch
 
-### add，commit，push的区别 
+#### add，commit，push的区别 
 
 [（本地工作目录）--add-->（缓存区）--commit-->（本地的git库）] ——-push———>（github）
 
