@@ -84,6 +84,82 @@
 
 - `git branch --all`.
 
+## 需求3：撤销与还原commit：
+
+撤销commit有很多方法，个人比较推荐用 reset 或 rebase -i，底下将会同时介绍 revert 和 reset 的方法。
+commit 如下
+```shell
+A -> B -> C -> D -> E
+```
+想要还原到 commit C 之后的状态 (也就是把 D 和 E 回退)
+
+1. `revert`
+用：
+```shell
+git revert E
+git revert D
+```
+结果：
+```shell
+A -> B -> C -> D -> E -> F -> G
+```
+F 是还原 commit E 修改结果的 commit
+
+G 是还原 commit D 修改结果的 commit
+
+因此，`revert` 只会`让 commit 继续往前`
+
+优点是可以针对某个 commit 进行还原，并且留下还原记录
+
+2. `rebase -i`
+
+假如想要抽掉某个 commit 又不想留下记录, `rebase -i `就很好用了
+
+假如只想要还原 D 变成：
+```shell
+A -> B -> C -> E
+```
+则用命令
+```shell
+git rebase -i C
+```
+这时候会出现文字编辑
+```shell
+pick D xxx
+pick E ooo
+```
+把 `pick D xxx` 整列移除后储存就可以了，若中间有遇到冲突，则必须自行修正后再继续
+```shell
+git add .
+git rebase --continue
+```
+3. reset
+用于做整段 commits 的还原
+
+例如希望还原到 B commit 以后的状态变成
+```shell
+A -> B
+```
+则
+```shell
+git reset B
+```
+那么 git 会将 log 中的 C, D, E 都清除
+
+但档案内容没有任何变动，因此会看到 C, D, E 修改的档案处在 unstaged 阶段
+
+若针对部分档案还原可以用
+```shell
+git checkout [file path]
+```
+若要全部还原可用
+```shell
+git checkout -f
+```
+4. 结论
+还没 `push` 前，个人倾向不产生太多 `commit`。因此我都会用 `rebase -i` 进行编修, 顺便合并或`reword` 一些 `commit`
+
+某个特殊情况, 例如发现某个 `commit` 里面包含了不相干的档案, 欲重新 `commit` 时，就会先用 `rebase -i` 把欲修改的 `commit` 换到后面(较新), 然后再用 `reset` 重新 `stage` + `commit`。
 
 # 套路：
 
