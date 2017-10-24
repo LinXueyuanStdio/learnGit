@@ -1,3 +1,7 @@
+# 目录
+- [需求1:小项目放在github上一般流程如下](https://github.com/LinXueyuanStdio/learnGit#需求1小项目放在github上一般流程如下)
+- [需求2:参与github开源项目提交pull-request](https://github.com/LinXueyuanStdio/learnGit#需求2参与github开源项目提交pull-request)
+- [需求3:撤销与还原commit](https://github.com/LinXueyuanStdio/learnGit#需求3撤销与还原commit)
 # 需求
 
 ## 需求1：小项目放在github上，一般流程如下：
