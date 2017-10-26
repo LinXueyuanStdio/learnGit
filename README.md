@@ -167,6 +167,45 @@ git checkout -f
 
 某个特殊情况, 例如发现某个 `commit` 里面包含了不相干的档案, 欲重新 `commit` 时，就会先用 `rebase -i` 把欲修改的 `commit` 换到后面(较新), 然后再用 `reset` 重新 `stage` + `commit`。
 
+## 需求4
+如果输入$ git remote add origin git@github.com:djqiang（github帐号名）/gitdemo（项目名）.git
+提示出错信息：fatal: remote origin already exists.
+解决办法如下：
+1、先输入$ git remote rm origin
+2、再输入$ git remote add origin git@github.com:djqiang/gitdemo.git 就不会报错了！
+3、如果输入$ git remote rm origin 还是报错的话，error: Could not remove config section ‘remote.origin’. 我们需要修改gitconfig文件的内容
+4、找到你的github的安装路径，我的是C:\Users\ASUS\AppData\Local\GitHub\PortableGit_ca477551eeb4aea0e4ae9fcd3358bd96720bb5c8\etc
+5、找到一个名为gitconfig的文件，打开它把里面的[remote "origin"]那一行删掉就好了！
+
+## 需求5
+如果输入$ ssh -T git@github.com
+出现错误提示：Permission denied (publickey).因为新生成的key不能加入ssh就会导致连接不上github。
+解决办法如下：
+1、先输入$ ssh-agent，再输入$ ssh-add ~/.ssh/id_key，这样就可以了。
+2、如果还是不行的话，输入ssh-add ~/.ssh/id_key 命令后出现报错Could not open a connection to your authentication agent.解决方法是key用Git Gui的ssh工具生成，这样生成的时候key就直接保存在ssh中了，不需要再ssh-add命令加入了，其它的user，token等配置都用命令行来做。
+3、最好检查一下在你复制id_rsa.pub文件的内容时有没有产生多余的空格或空行，有些编辑器会帮你添加这些的。
+
+## 需求6
+如果输入$ git push origin master
+提示出错信息：error:failed to push som refs to …….
+解决办法如下：
+1、先输入$ git pull origin master //先把远程服务器github上面的文件拉下来
+2、再输入$ git push origin master
+3、如果出现报错 fatal: Couldn’t find remote ref master或者fatal: ‘origin’ does not appear to be a git repository以及fatal: Could not read from remote repository.
+4、则需要重新输入$ git remote add origingit@github.com:djqiang/gitdemo.git
+
+## 需求7
+从 github 执行 git pull 的时候提示 error: RPC failed，如：
+error: RPC failed; result=52, HTTP code = 0fatal: The remote end hung up unexpectedly
+
+应该是pull 内容更新太多，需要设置postBuffer更大些
+
+git config --global http.postBuffer 524288000
+
+
+
+
+
 # 套路：
 
 `mkdir  ADirectory`#本地随意创建一个文件夹 
@@ -322,4 +361,99 @@ $ `git reset --hard HEAD` 用来撤销还没commit 的merge,其实原理就是�
 `git reset --merge ORIG_HEAD`，注意其中的--hard 换成了 --merge，这样就可以避免在回滚时清除working tree。
 
 
+# Git 常用命令
 
+## 远程仓库相关命令 
+- 检出仓库：   `$ git clone git://github.com/jquery/jquery.git`
+
+- 查看远程仓库：`$ git remote -v`
+
+- 添加远程仓库：`$ git remote add [name] [url]`
+
+- 删除远程仓库：`$ git remote rm [name]`
+
+- 修改远程仓库：`$ git remote set-url --push [name] [newUrl]`
+
+- 拉取远程仓库：`$ git pull [remoteName] [localBranchName]`
+
+- 推送远程仓库：`$ git push [remoteName] [localBranchName]`
+
+*如果想把本地的某个分支test提交到远程仓库，并作为远程仓库的master分支，或者作为另外一个名叫test的分支，如下： 
+`$git push origin test:master`         // 提交本地test分支作为远程的master分支
+
+`$git push origin test:test`              // 提交本地test分支作为远程的test分支 
+
+## 分支(branch)操作相关命令
+- 查看本地分支：`$ git branch`
+
+- 查看远程分支：`$ git branch -r`
+
+- 创建本地分支：`$ git branch [name]` ----注意新分支创建后不会自动切换为当前分支
+
+- 切换分支：`$ git checkout [name]`
+
+- 创建新分支并立即切换到新分支：`$ git checkout -b [name]`
+
+- 删除分支：`$ git branch -d [name]` ---- -d选项只能删除已经参与了合并的分支，对于未有合并的分支是无法删除的。如果想强制删除一个分支，可以使用-D选项
+
+- 合并分支：`$ git merge [name]` ----将名称为`[name]`的分支与当前分支合并
+
+- 创建远程分支(本地分支push到远程)：`$ git push origin [name]`
+
+- 删除远程分支：`$ git push origin :heads/[name]` 或 `$ gitpush origin :[name] `
+
+
+*创建空的分支：(执行命令之前记得先提交你当前分支的修改，否则会被强制删干净没得后悔) 
+`$git symbolic-ref HEAD refs/heads/[name]`
+
+`$rm .git/index`
+
+`$git clean -fdx `
+
+## 版本(tag)操作相关命令
+- 查看版本：`$ git tag`
+
+- 创建版本：`$ git tag [name]`
+
+- 删除版本：`$ git tag -d [name]`
+
+- 查看远程版本：`$ git tag -r`
+
+- 创建远程版本(本地版本push到远程)：`$ git push origin [name]`
+
+- 删除远程版本：`$ git push origin :refs/tags/[name]`
+
+- 合并远程仓库的tag到本地：`$ git pull origin --tags`
+
+- 上传本地tag到远程仓库：`$ git push origin --tags`
+
+- 创建带注释的tag：`$ git tag -a [name] -m 'yourMessage'`
+
+ 
+ 
+## 子模块(submodule)相关操作命令
+- 添加子模块：`$ git submodule add [url] [path]`
+
+如：`$git submodule add git://github.com/soberh/ui-libs.git src/main/webapp/ui-libs`
+ 
+- 初始化子模块：`$ git submodule init`  ----只在首次检出仓库时运行一次就行
+
+- 更新子模块：`$ git submodule update` ----每次更新或切换分支后都需要运行一下
+
+- 删除子模块：（分4步走哦）
+
+1) `$ git rm --cached [path]`
+
+2) 编辑`“.gitmodules”`文件，将子模块的相关配置节点删除掉
+
+3) 编辑`“ .git/config”`文件，将子模块的相关配置节点删除掉
+
+4) 手动删除子模块残留的目录
+
+5）忽略一些文件、文件夹不提交
+在仓库根目录下创建名称为“.gitignore”的文件，写入不需要的文件夹名或文件，每个元素占一行即可，如
+```
+target
+bin
+*.db
+```
