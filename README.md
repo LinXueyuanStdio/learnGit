@@ -23,7 +23,7 @@
 
 # 需求
 
-## 需求1：小项目放在github上，一般流程如下：
+## 需求1：小项目放在github上，一般流程如下：[ < Back to 目录](https://github.com/LinXueyuanStdio/learnGit#目录)
 
 1. 新建一个repository
 
@@ -42,7 +42,7 @@
 
 8. `git push -u origin master`向github服务器推送git commit 后的文件，流程完毕
 
-## 需求2：参与github开源项目，提交pull request：
+## 需求2：参与github开源项目，提交pull request：[ < Back to 目录](https://github.com/LinXueyuanStdio/learnGit#目录)
 
 1. fork原始仓库
 
@@ -107,7 +107,7 @@
 
 - `git branch --all`.
 
-## 需求3：撤销与还原commit：
+## 需求3：撤销与还原commit：[ < Back to 目录](https://github.com/LinXueyuanStdio/learnGit#目录)
 
 撤销commit有很多方法，个人比较推荐用 reset 或 rebase -i，底下将会同时介绍 revert 和 reset 的方法。
 commit 如下
@@ -184,7 +184,7 @@ git checkout -f
 
 某个特殊情况, 例如发现某个 `commit` 里面包含了不相干的档案, 欲重新 `commit` 时，就会先用 `rebase -i` 把欲修改的 `commit` 换到后面(较新), 然后再用 `reset` 重新 `stage` + `commit`。
 
-## 需求4
+## 需求4 [ < Back to 目录](https://github.com/LinXueyuanStdio/learnGit#目录)
 如果输入$ git remote add origin git@github.com:djqiang（github帐号名）/gitdemo（项目名）.git
 提示出错信息：fatal: remote origin already exists.
 解决办法如下：
@@ -194,7 +194,7 @@ git checkout -f
 4、找到你的github的安装路径，我的是C:\Users\ASUS\AppData\Local\GitHub\PortableGit_ca477551eeb4aea0e4ae9fcd3358bd96720bb5c8\etc
 5、找到一个名为gitconfig的文件，打开它把里面的[remote "origin"]那一行删掉就好了！
 
-## 需求5
+## 需求5 [ < Back to 目录](https://github.com/LinXueyuanStdio/learnGit#目录)
 如果输入$ ssh -T git@github.com
 出现错误提示：Permission denied (publickey).因为新生成的key不能加入ssh就会导致连接不上github。
 解决办法如下：
@@ -202,7 +202,7 @@ git checkout -f
 2、如果还是不行的话，输入ssh-add ~/.ssh/id_key 命令后出现报错Could not open a connection to your authentication agent.解决方法是key用Git Gui的ssh工具生成，这样生成的时候key就直接保存在ssh中了，不需要再ssh-add命令加入了，其它的user，token等配置都用命令行来做。
 3、最好检查一下在你复制id_rsa.pub文件的内容时有没有产生多余的空格或空行，有些编辑器会帮你添加这些的。
 
-## 需求6
+## 需求6 [ < Back to 目录](https://github.com/LinXueyuanStdio/learnGit#目录)
 如果输入$ git push origin master
 提示出错信息：error:failed to push som refs to …….
 解决办法如下：
@@ -211,7 +211,7 @@ git checkout -f
 3、如果出现报错 fatal: Couldn’t find remote ref master或者fatal: ‘origin’ does not appear to be a git repository以及fatal: Could not read from remote repository.
 4、则需要重新输入$ git remote add origingit@github.com:djqiang/gitdemo.git
 
-## 需求7
+## 需求7 [ < Back to 目录](https://github.com/LinXueyuanStdio/learnGit#目录)
 从 github 执行 git pull 的时候提示 error: RPC failed，如：
 error: RPC failed; result=52, HTTP code = 0fatal: The remote end hung up unexpectedly
 
@@ -223,7 +223,7 @@ git config --global http.postBuffer 524288000
 
 
 
-# 套路：
+# 套路 [ < Back to 目录](https://github.com/LinXueyuanStdio/learnGit#目录)
 
 `mkdir  ADirectory`#本地随意创建一个文件夹 
 
@@ -268,7 +268,7 @@ git config --global http.postBuffer 524288000
 `git pull`#把github的文件都拉下来
 
 
-# 最基本的命令：
+# 最基本的命令 [ < Back to 目录](https://github.com/LinXueyuanStdio/learnGit#目录)
 
 `git clone` 拷贝并跟踪远程的master分支。跟踪的好处是以后可以直接通过pull和push命令来提交或者获取远程最新的代码，而不需要指定远程分支名字。
 
@@ -281,7 +281,7 @@ git config --global http.postBuffer 524288000
 HEAD 指向当前的commit 对象(可以想象为当前分支的别名)，同时也用来表明我们在哪个branch上工作。所以当我们使用HEAD来操作指针的时候，其实就是不改变当前的commit的指向。
 
 
-## 显示信息类命令 
+## 显示信息类命令  [ < Back to 目录](https://github.com/LinXueyuanStdio/learnGit#目录)
 
 `git ls-files -u` 显示冲突的文件，-s是显示标记为冲突已解决的文件
 
@@ -309,7 +309,7 @@ HEAD 指向当前的commit 对象(可以想象为当前分支的别名)，同时
 
 `git blame -L 12,22 sth.cs` 如果你发现自己代码中 的一个方法存在缺陷,你可以用git blame来标注文件,查看那个方法的每一行分别是由谁 在哪一天修改的。下面这个例子使用了-L选项来限制输出范围在第12至22行
 
-## 创建类命令 
+## 创建类命令 [ < Back to 目录](https://github.com/LinXueyuanStdio/learnGit#目录)
 
 `git brach branchName` 创建名为branchName的branch 
 
@@ -319,7 +319,7 @@ HEAD 指向当前的commit 对象(可以想象为当前分支的别名)，同时
 
 `git brach branchName ef71` 从commit ef71创建名为branchName的branch
 
-## 撤销类命令 
+## 撤销类命令 [ < Back to 目录](https://github.com/LinXueyuanStdio/learnGit#目录)
 
 #### 如果是单个文件 
 
@@ -341,7 +341,7 @@ HEAD 指向当前的commit 对象(可以想象为当前分支的别名)，同时
 
 3.`git revert` 也是撤销命令，区别在于reset是指向原地或者向前移动指针，git revert是创建一个commit来覆盖当前的commit,指针向后移动
 
-## 提交类命令 
+## 提交类命令 [ < Back to 目录](https://github.com/LinXueyuanStdio/learnGit#目录)
 
 1. `git add` 跟踪新文件或者已有文件的改动，或者用来解决冲突
 
@@ -353,7 +353,7 @@ HEAD 指向当前的commit 对象(可以想象为当前分支的别名)，同时
 
 [（本地工作目录）--add-->（缓存区）--commit-->（本地的git库）] ——-push———>（github）
 
-## 删除类命令 
+## 删除类命令 [ < Back to 目录](https://github.com/LinXueyuanStdio/learnGit#目录)
 
 1. `git rm --cached readme.txt` 只从stage中删除，保留物理文件
 
@@ -361,7 +361,7 @@ HEAD 指向当前的commit 对象(可以想象为当前分支的别名)，同时
 
 3. `git mv a.txt b.txt` 把a.txt改名为b.txt
 
-## Merge类命令
+## Merge类命令 [ < Back to 目录](https://github.com/LinXueyuanStdio/learnGit#目录)
 
 在冲突状态下，需要解决冲突的文件会从index打回到工作区。
 
@@ -378,9 +378,9 @@ $ `git reset --hard HEAD` 用来撤销还没commit 的merge,其实原理就是�
 `git reset --merge ORIG_HEAD`，注意其中的--hard 换成了 --merge，这样就可以避免在回滚时清除working tree。
 
 
-# Git 常用命令
+# Git 常用命令 [ < Back to 目录](https://github.com/LinXueyuanStdio/learnGit#目录)
 
-## 远程仓库相关命令 
+## 远程仓库相关命令 [ < Back to 目录](https://github.com/LinXueyuanStdio/learnGit#目录)
 - 检出仓库：   `$ git clone git://github.com/jquery/jquery.git`
 
 - 查看远程仓库：`$ git remote -v`
@@ -400,7 +400,7 @@ $ `git reset --hard HEAD` 用来撤销还没commit 的merge,其实原理就是�
 
 `$git push origin test:test`              // 提交本地test分支作为远程的test分支 
 
-## 分支(branch)操作相关命令
+## 分支(branch)操作相关命令 [ < Back to 目录](https://github.com/LinXueyuanStdio/learnGit#目录)
 - 查看本地分支：`$ git branch`
 
 - 查看远程分支：`$ git branch -r`
@@ -427,7 +427,7 @@ $ `git reset --hard HEAD` 用来撤销还没commit 的merge,其实原理就是�
 
 `$git clean -fdx `
 
-## 版本(tag)操作相关命令
+## 版本(tag)操作相关命令 [ < Back to 目录](https://github.com/LinXueyuanStdio/learnGit#目录)
 - 查看版本：`$ git tag`
 
 - 创建版本：`$ git tag [name]`
@@ -448,7 +448,7 @@ $ `git reset --hard HEAD` 用来撤销还没commit 的merge,其实原理就是�
 
  
  
-## 子模块(submodule)相关操作命令
+## 子模块(submodule)相关操作命令 [ < Back to 目录](https://github.com/LinXueyuanStdio/learnGit#目录)
 - 添加子模块：`$ git submodule add [url] [path]`
 
 如：`$git submodule add git://github.com/soberh/ui-libs.git src/main/webapp/ui-libs`
