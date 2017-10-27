@@ -1,12 +1,13 @@
-# 目录
+# 需求
 - [需求1:小项目放在github上一般流程如下](https://github.com/LinXueyuanStdio/learnGit#需求1小项目放在github上一般流程如下)
 - [需求2:参与github开源项目提交pull-request](https://github.com/LinXueyuanStdio/learnGit#需求2参与github开源项目提交pull-request)
 - [需求3:撤销与还原commit](https://github.com/LinXueyuanStdio/learnGit#需求3撤销与还原commit)
-- [需求4](https://github.com/LinXueyuanStdio/learnGit#需求4)
-- [需求5](https://github.com/LinXueyuanStdio/learnGit#需求5)
-- [需求6](https://github.com/LinXueyuanStdio/learnGit#需求6)
-- [需求7](https://github.com/LinXueyuanStdio/learnGit#需求7)
+- [需求4:remote origin already exists](https://github.com/LinXueyuanStdio/learnGit#需求4:remote origin already exists.)
+- [需求5:Permission denied (publickey).](https://github.com/LinXueyuanStdio/learnGit#需求5:Permission denied publickey.)
+- [需求6:failed to push som refs to](https://github.com/LinXueyuanStdio/learnGit#需求6:failed to push som refs to)
+- [需求7:RPC failed](https://github.com/LinXueyuanStdio/learnGit#需求7:RPC failed)
 - [需求8](https://github.com/LinXueyuanStdio/learnGit#需求8)
+# 目录
 - [套路](https://github.com/LinXueyuanStdio/learnGit#套路)
 - [最基本的命令](https://github.com/LinXueyuanStdio/learnGit#最基本的命令)
   - [显示信息类命令](https://github.com/LinXueyuanStdio/learnGit#显示信息类命令)
@@ -184,40 +185,52 @@ git checkout -f
 
 某个特殊情况, 例如发现某个 `commit` 里面包含了不相干的档案, 欲重新 `commit` 时，就会先用 `rebase -i` 把欲修改的 `commit` 换到后面(较新), 然后再用 `reset` 重新 `stage` + `commit`。
 
-## 需求4 [ < Back to 目录](https://github.com/LinXueyuanStdio/learnGit#目录)
-如果输入$ git remote add origin git@github.com:djqiang（github帐号名）/gitdemo（项目名）.git
-提示出错信息：fatal: remote origin already exists.
-解决办法如下：
-1、先输入$ git remote rm origin
-2、再输入$ git remote add origin git@github.com:djqiang/gitdemo.git 就不会报错了！
-3、如果输入$ git remote rm origin 还是报错的话，error: Could not remove config section ‘remote.origin’. 我们需要修改gitconfig文件的内容
-4、找到你的github的安装路径，我的是C:\Users\ASUS\AppData\Local\GitHub\PortableGit_ca477551eeb4aea0e4ae9fcd3358bd96720bb5c8\etc
-5、找到一个名为gitconfig的文件，打开它把里面的[remote "origin"]那一行删掉就好了！
+## 需求4:remote origin already exists. [ < Back to 目录](https://github.com/LinXueyuanStdio/learnGit#目录)
 
-## 需求5 [ < Back to 目录](https://github.com/LinXueyuanStdio/learnGit#目录)
-如果输入$ ssh -T git@github.com
-出现错误提示：Permission denied (publickey).因为新生成的key不能加入ssh就会导致连接不上github。
-解决办法如下：
-1、先输入$ ssh-agent，再输入$ ssh-add ~/.ssh/id_key，这样就可以了。
-2、如果还是不行的话，输入ssh-add ~/.ssh/id_key 命令后出现报错Could not open a connection to your authentication agent.解决方法是key用Git Gui的ssh工具生成，这样生成的时候key就直接保存在ssh中了，不需要再ssh-add命令加入了，其它的user，token等配置都用命令行来做。
-3、最好检查一下在你复制id_rsa.pub文件的内容时有没有产生多余的空格或空行，有些编辑器会帮你添加这些的。
+如果输入`$ git remote add origin git@github.com:djqiang（github帐号名）/gitdemo（项目名）.git`
 
-## 需求6 [ < Back to 目录](https://github.com/LinXueyuanStdio/learnGit#目录)
-如果输入$ git push origin master
-提示出错信息：error:failed to push som refs to …….
-解决办法如下：
-1、先输入$ git pull origin master //先把远程服务器github上面的文件拉下来
-2、再输入$ git push origin master
-3、如果出现报错 fatal: Couldn’t find remote ref master或者fatal: ‘origin’ does not appear to be a git repository以及fatal: Could not read from remote repository.
-4、则需要重新输入$ git remote add origingit@github.com:djqiang/gitdemo.git
+提示出错信息：`fatal: remote origin already exists.`
 
-## 需求7 [ < Back to 目录](https://github.com/LinXueyuanStdio/learnGit#目录)
-从 github 执行 git pull 的时候提示 error: RPC failed，如：
-error: RPC failed; result=52, HTTP code = 0fatal: The remote end hung up unexpectedly
+解决办法如下：
+1. 先输入`$ git remote rm origin`
+2. 再输入`$ git remote add origin git@github.com:djqiang/gitdemo.git` 就不会报错了！
+3. 如果输入`$ git remote rm origin` 还是报错的话，`error: Could not remove config section ‘remote.origin’. `我们需要修改`gitconfig`文件的内容
+4. 找到你的`github`的安装路径，我的是`C:\Users\ASUS\AppData\Local\GitHub\PortableGit_ca477551eeb4aea0e4ae9fcd3358bd96720bb5c8\etc`
+5. 找到一个名为`gitconfig`的文件，打开它把里面的[remote "origin"]那一行删掉就好了！
+
+## 需求5:Permission denied (publickey). [ < Back to 目录](https://github.com/LinXueyuanStdio/learnGit#目录)
+
+如果输入`$ ssh -T git@github.com`
+
+出现错误提示：`Permission denied (publickey).`因为新生成的`key`不能加入`ssh`就会导致连接不上`github`。
+
+解决办法如下：
+1. 先输入`$ ssh-agent`，再输入`$ ssh-add ~/.ssh/id_key`，这样就可以了。
+2. 如果还是不行的话，输入`ssh-add ~/.ssh/id_key` 命令后出现报错`Could not open a connection to your authentication agent.`
+  解决方法是`key`用`Git Gui`的`ssh工具`生成，这样生成的时候`key`就直接保存在`ssh`中了，不需要再`ssh-add`命令加入了，其它的`user`，`token`等配置都用命令行来做。
+3. 最好检查一下在你复制`id_rsa.pub`文件的内容时有没有产生多余的空格或空行，有些编辑器会帮你添加这些的。
+
+## 需求6:failed to push som refs to [ < Back to 目录](https://github.com/LinXueyuanStdio/learnGit#目录)
+
+如果输入`$ git push origin master`
+
+提示出错信息：`error:failed to push som refs to …….`
+
+解决办法如下：
+1. 先输入`$ git pull origin master` //先把远程服务器github上面的文件拉下来
+2. 再输入`$ git push origin master`
+3. 如果出现报错 `fatal: Couldn’t find remote ref master`或者`fatal: ‘origin’ does not appear to be a git repository`以及`fatal: Could not read from remote repository.`
+4. 则需要重新输入`$ git remote add origingit@github.com:djqiang/gitdemo.git`
+
+## 需求7:RPC failed [ < Back to 目录](https://github.com/LinXueyuanStdio/learnGit#目录)
+
+从 github 执行 `git pull` 的时候提示 `error: RPC failed`，如：
+
+`error: RPC failed; result=52, HTTP code = 0 fatal: The remote end hung up unexpectedly`
 
 应该是pull 内容更新太多，需要设置postBuffer更大些
 
-git config --global http.postBuffer 524288000
+`git config --global http.postBuffer 524288000`
 
 
 
